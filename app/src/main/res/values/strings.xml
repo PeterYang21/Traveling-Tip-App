@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Project3</string>
+    <string name="HINT_UserName">Create user name</string>
+    <string name="HINT_EnterUserName">Enter user name</string>
+    <string name="HINT_Password">Enter password</string>
+
+    <string name="Login">Login</string>
+    <string name="CreateAccount">Register</string>
+    <string name="HINT_CreatePassword">Create your password</string>
+    <string name="HINT_FullName">Enter your full name</string>
+    <string name="HINT_Hometown">Enter your hometown</string>
+    <string name="HINT_Bio">Enter a short biography</string>
+    <string name="TakePic">Take a photo \n for your profile</string>
+    <string name="TakePicPost">Take a photo \n for your post</string>
+
+    <string name="Dialog_Titile">Prompt</string>
+    <string name="Traditional">Traditional Food</string>
+    <string name="OK">Got it</string>
+
+    <string name="XingHaiSquare">Xinghai Square was built at the centennial of the City of Dalian in 1998.The sculptures of 1000 footprints and an opened book facing the sea commemorates the vicissitudes of the city history. Across the Xinghai Bay, the Xinghai Bay Bridge could be seen. Around the square are high end apartments, restaurants, banks, luxury sports car dealers and an amusement park.The Xinghai Bay beach, the Castle Hotel, Dalian Morden History Museum and Dalian Shell Museum are also nearby. Located on the opposite side of the sculpture complex is the Xinghai CBD, which houses among other things Dalian Xinghai Convention and Exhibitions Center, Dalian World Expo Center and the headquarters of Dalian Commodity Exchange.</string>
+    <string name="XiamenUiviversity">Xiamen University main campus is located in Siming District in southwestern Xiamen. It is situated at the foothills of mountains, facing the ocean and surrounded by Xiamen bay. The main campus is picturesque with beautiful scenery and parks and is one of the main tourist attractions in Xiamen, itself a popular tourist destination.Xiamen University has a built area of 2.6 million square meters and its libraries hold 3.5 million volumes.According to University Undergraduates Teaching Assessment and Chinese Universities Evaluation Standings, the university is ranked 11th in China and has maintained a top-20 ranking in China, among which 6 subjects reach A++ level, including economics and management, fine art, law, chemistry, journalism, communication and mathematics.</string>
+
+    <string name="ZongZi">Zong Zi</string>
+    <string name="ZongZi_Info">Zongzi, also known as Zong or sticky rice dumplings to westerners, is a traditional  Chinese Dragon Boat Festival food. It is mainly made of glutinous rice with other fillings, wrapped in bamboo or reed leaves and cooked by a few hours steaming or boiling. One of the most famous flavor is the Fujian Style zong. Among them, Braised pork Zong are the most popular ones in Xiamen, city of Fujian. It usually uses braised pork, mushroom and shrimps and lotus seeds as extra fillings. </string>
+    <string name="GuoBaoRou">Guo Bao Rou</string>
+    <string name="guobaoMeat_Info">Guo Bao Rou is a type of sweet and sour pork, but what makes this dish distinct among all sweet and sour porks is the care taken into thinly slicing the pork. This thin slicing, along with the breading, frying, and perfectly balanced sauce, makes for one of the best dishes in the Northeastern part of China. It belongs to the taste style of Dongbei, a style of Chinese cuisine that originates in the Northeastern part of the country.</string>
+</resources>

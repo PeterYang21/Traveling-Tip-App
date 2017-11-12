@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/activity_main_menu"
+    >
+
+    </LinearLayout>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+    >
+
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="115dp"
+            android:id="@+id/toMainMenu"
+            android:text="Main\nMenu"
+            android:textAllCaps="false"
+            />
+
+        <Button
+            android:layout_height="match_parent"
+            android:layout_width="115dp"
+            android:id="@+id/toExplore"
+            android:text="Explore"
+            android:textAllCaps="false"
+            />
+
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="115dp"
+            android:id="@+id/toProfile"
+            android:text="My\nProfile"
+            android:textAllCaps="false"
+            />
+
+    </android.support.v7.widget.Toolbar>
+
+
+    </RelativeLayout>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="400dp">
+
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="360dp"
+        android:id="@+id/MainMenu_ImageButton"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:textColor="@color/colorPrimary"
+        android:id="@+id/MainMenu_CityName"
+        android:layout_below="@+id/MainMenu_ImageButton"
+        android:gravity="center"
+        />
+
+</RelativeLayout>

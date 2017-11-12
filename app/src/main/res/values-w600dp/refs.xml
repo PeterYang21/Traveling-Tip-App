@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="master_and_detail_01" type="layout">@layout/activity_master_detail_01</item>
+
+</resources>

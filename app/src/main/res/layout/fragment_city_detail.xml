@@ -1,0 +1,71 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="vertical"
+    android:id="@+id/fragment_cityDetail"
+    >
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/CityInfo"
+            />
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_below="@id/CityInfo"
+            android:id="@+id/Button_CityPlates"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/Button_CityPlates"
+            android:id="@+id/text_Plates"
+            android:text="Traditional Plates"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textStyle="italic"
+            android:textColor="@color/colorPrimary"
+            />
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_Plates"
+            android:id="@+id/Button_PlaceofInterests"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/Button_PlaceofInterests"
+            android:id="@+id/text_PlaceofInterests"
+            android:text="Places of Interest"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textStyle="italic"
+            android:textColor="@color/colorPrimary"
+            />
+
+        <Button
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_PlaceofInterests"
+            android:text="Show Detailed Location\nIn Map"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textStyle="italic"
+            android:textColor="@color/colorPrimary"
+            android:id="@+id/button_showMap"
+            />
+    </RelativeLayout>
+</ScrollView>
