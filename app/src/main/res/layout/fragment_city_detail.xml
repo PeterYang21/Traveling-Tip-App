@@ -60,7 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/text_PlaceofInterests"
-            android:text="Show Detailed Location\nIn Map"
+            android:text="Detailed Location In Map"
             android:textSize="20sp"
             android:gravity="center"
             android:textStyle="italic"
