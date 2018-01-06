@@ -1,6 +1,6 @@
 # Travelling Tip App
 ## Description
-</br>Provide tips for travelling to various cities by showing their distinct features through views of locally traditional plates and places of interest. Users can create accounts, create/update profiles and favorite places interested in for further travelling plans while navigating app. App data including users’ information is managed by SQLite database
+Provide tips for travelling to various cities by showing their distinct features through views of locally traditional plates and places of interest. Users can create accounts, create/update profiles and favorite places interested in for further travelling plans while navigating app. App data including users’ information is managed by SQLite database
 
 ## Functionality
 ### Create a new account
