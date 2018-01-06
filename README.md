@@ -29,4 +29,4 @@
 ### View location on Map
 ![](img/map.png)
 
-Have Fun!
+### Have Fun!
