@@ -2,7 +2,6 @@ package csc214.project3.Activity;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -46,7 +45,7 @@ public class Fragment_Dialog extends android.support.v4.app.DialogFragment{
         }
 
         return new AlertDialog.Builder(getActivity()) // build an alert dialog
-                .setTitle(R.string.Dialog_Titile)
+                .setTitle("\n")
                 .setView(view)
                 .setPositiveButton(R.string.OK, null)
                 .create();

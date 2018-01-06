@@ -24,7 +24,6 @@ import java.util.UUID;
 
 import csc214.project3.BuildConfig;
 import csc214.project3.Controller.SetBitmap;
-import csc214.project3.Database.DB_Schema;
 import csc214.project3.Model.Collection;
 import csc214.project3.Model.Profile;
 import csc214.project3.Model.User;
@@ -48,7 +47,7 @@ public class Activity_CreateProfile extends AppCompatActivity {
 
         Intent intent = getIntent();
         Log.d(TAG, "In Create Profile Activity, current intent:" + intent);
-        userName = intent.getExtras().getString(Activity_MainMenu.Key_UserName);
+        userName = intent.getExtras().getString(Activity_Login.Key_UserName);
         Log.d(TAG, "In Create Profile Activity, current User Name is " + userName);
 
         Button Button_TakePic = (Button)findViewById(R.id.Button_TakePhoto); // click the button to take picture
@@ -87,6 +86,7 @@ public class Activity_CreateProfile extends AppCompatActivity {
             profile_Pic.setImageBitmap(bitmap_Pic);
 
             getSupportActionBar().setTitle("Update Your Profile");
+
         }
         else{
             getSupportActionBar().setTitle("Create Your Profile");
@@ -177,6 +177,14 @@ public class Activity_CreateProfile extends AppCompatActivity {
             startActivity(intent);
 
             Log.d("My tag", "Menu gotoMainMenu is clicked");
+            isSelected = true;
+        }
+        else if(item.getItemId() == R.id.menu_ShowFavorite){
+            Intent intent = new Intent(Activity_CreateProfile.this, Activity_Favorite.class);
+            intent.putExtra(Activity_Login.Key_UserName, userName);
+            startActivity(intent);
+
+            Log.d("My tag", "Menu gotoFavorite is clicked");
             isSelected = true;
         }
         else{ // default false

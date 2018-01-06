@@ -1,9 +1,7 @@
 package csc214.project3.Controller;
 
-import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Point;
 import android.util.Log;
 
 public class SetBitmap {

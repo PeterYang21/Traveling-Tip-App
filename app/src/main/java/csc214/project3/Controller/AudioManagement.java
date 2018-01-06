@@ -3,11 +3,9 @@ package csc214.project3.Controller;
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
-import android.icu.text.LocaleDisplayNames;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.ArrayList;

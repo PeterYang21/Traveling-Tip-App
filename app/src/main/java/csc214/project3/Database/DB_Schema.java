@@ -4,7 +4,7 @@ package csc214.project3.Database;
 public class DB_Schema {
 
     public static final int VERSION = 1;
-    public static final String DATABASE_NAME = "v1.db"; // database name
+    public static final String DATABASE_NAME = "v5.db"; // database name
 
     public static final class CityTable{
 

@@ -2,12 +2,9 @@ package csc214.project3.Activity;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.content.Intent;
@@ -26,7 +23,7 @@ public class Activity_Login extends AppCompatActivity {
     public static EditText Text_UserName;
     public static EditText Text_Password;
 
-    public static String Key_UserName;
+    public static String Key_UserName = "Key_UserName";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

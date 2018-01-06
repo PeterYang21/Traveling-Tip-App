@@ -6,16 +6,20 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-import android.widget.EditText;
+import android.view.View;
+import android.widget.ImageButton;
+
+import java.util.ArrayList;
 
 import csc214.project3.Database.DB_CursorWrapper;
 import csc214.project3.Database.DB_Helper;
 import csc214.project3.Database.DB_Schema;
+import csc214.project3.R;
 
 public class Collection {
 
     private static Context myContext;
-    private static SQLiteDatabase myDatabase;
+    public static SQLiteDatabase myDatabase;
 
     private static final String TAG = "My Tag";
 
@@ -134,16 +138,6 @@ public class Collection {
         return mValues;
     }
 
-    private static ContentValues getValues_Favor(User user, String cityName){
-        ContentValues mValues = new ContentValues();
-
-        mValues.put(DB_Schema.FavoriteTable.Columns.USERNAME, user.getUserName());
-        mValues.put(DB_Schema.FavoriteTable.Columns.FAVORITE, cityName);
-
-        return mValues;
-    }
-
-
     public static Profile checkProfile(String userName){
 //        String SQL = "Select " + DB_Schema.ProfileTable.Columns.USERNAME + " From " + DB_Schema.ProfileTable.TABLE_NAME
 //                + " Where " + DB_Schema.ProfileTable.Columns.USERNAME + " = ?";
@@ -189,6 +183,8 @@ public class Collection {
         DB_CursorWrapper mWrapper = new DB_CursorWrapper(cursor);
         mWrapper.moveToFirst();
 
+        Log.d(TAG, "Current Account for user "+mWrapper.getCount());
+
         if(!mWrapper.isAfterLast()){
             Account acc = mWrapper.getAccount();
 
@@ -203,7 +199,113 @@ public class Collection {
         return false;
     }
 
-    public static void insertFavorite(){
-        // insert favorite table dialog confirm adding preference or logout
+    public static void doFavButton(final ImageButton fav_button, final String userName, final String cityName){
+        // first check if prev favorite record exists
+        boolean dup = check_duplicateFavor(userName, cityName);
+        if(!dup){
+            fav_button.setBackgroundResource(R.drawable.ic_like_0);
+        }
+        else{
+            fav_button.setBackgroundResource(R.drawable.ic_like_1);
+        }
+        // delete if unfavorite, add if favorite
+        fav_button.setOnClickListener(new View.OnClickListener() { // set the "favorite" button
+            @Override
+            public void onClick(View v) {
+                boolean dup = check_duplicateFavor(userName, cityName);
+                if(!dup){ // like it
+                    fav_button.setBackgroundResource(R.drawable.ic_like_1);
+                    insertFavorite(userName, cityName);
+                }
+                else{ // unlike it
+                    fav_button.setBackgroundResource(R.drawable.ic_like_0);
+                    deleteFavorite(userName, cityName);
+                }
+            }
+        });
+
+    }
+
+    // insert to favorite table if no duplicate rocord exists
+    public static void insertFavorite(String userName, String cityName){
+
+        ContentValues mValues = getValues_Favor(userName, cityName);
+        myDatabase.insert(DB_Schema.FavoriteTable.TABLE_NAME, null, mValues);
+        Log.d(TAG, "Favorite Insertion "+mValues);
+    }
+
+    public static void deleteFavorite(String userName, String cityName){
+        String WHERE = DB_Schema.FavoriteTable.Columns.USERNAME+"=? AND " + DB_Schema.FavoriteTable.Columns.FAVORITE+"=?";
+        String[] args = new String[]{userName, cityName}; // assign args to where clause
+        myDatabase.delete(DB_Schema.FavoriteTable.TABLE_NAME, WHERE, args);
+        Log.d(TAG, "Favorite delete "+ cityName);
+    }
+
+    // check if prev favorite record exists
+    public static boolean check_duplicateFavor(String userName, String cityName){
+        String WHERE = DB_Schema.FavoriteTable.Columns.USERNAME+"=? AND " + DB_Schema.FavoriteTable.Columns.FAVORITE+"=?";
+        String[] args = new String[]{userName, cityName}; // assign args to where clause
+
+        Cursor cursor =
+                myDatabase.query(
+                        DB_Schema.FavoriteTable.TABLE_NAME, // Select * from
+                        null,
+                        WHERE,
+                        args,
+                        null, null, null);
+        DB_CursorWrapper mWrapper = new DB_CursorWrapper(cursor);
+        mWrapper.moveToFirst();
+
+        if(mWrapper.getCount() == 0){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    private static ContentValues getValues_Favor(String userName, String cityName){
+        ContentValues mValues = new ContentValues();
+
+        mValues.put(DB_Schema.FavoriteTable.Columns.USERNAME, userName);
+        mValues.put(DB_Schema.FavoriteTable.Columns.FAVORITE, cityName);
+
+        return mValues;
+    }
+
+    public static ArrayList<City> getFavoriteCity(String userName){
+        String sql = "SELECT * FROM " + DB_Schema.FavoriteTable.TABLE_NAME
+                +  " WHERE " + DB_Schema.FavoriteTable.Columns.USERNAME + " =?";
+        Log.d(TAG, "SQL Favorite: " + sql);
+        Cursor favCursor = myDatabase.rawQuery(sql, new String[]{userName});
+        favCursor.moveToFirst();
+        Log.d("My Tag", "Fav Cursor is at " + favCursor.getPosition());
+        DB_CursorWrapper mWrapper = new DB_CursorWrapper(favCursor);
+        mWrapper.moveToFirst();
+
+//        Log.d(TAG, "Current Favorite Count from query "+mWrapper.getCount());
+
+        ArrayList<City> favCities = new ArrayList<>();
+        while(!mWrapper.isAfterLast()){
+            // get favorite city's name
+            String cityName = mWrapper.getFavorite();
+
+            sql = "SELECT * FROM " + DB_Schema.CityTable.TABLE_NAME
+                    +  " WHERE " + DB_Schema.CityTable.Columns.CITY_NAME + " =?";
+            Log.d(TAG, "SQL Find City: " + sql);
+            Cursor cityCursor = myDatabase.rawQuery(sql, new String[]{cityName});
+            cityCursor.moveToFirst();
+            DB_CursorWrapper cityWrapper = new DB_CursorWrapper(cityCursor);
+            cityWrapper.moveToFirst();
+            City mCity = cityWrapper.getCity();
+            favCities.add(mCity);
+            cityCursor.close();
+
+            mWrapper.moveToNext();
+        }
+        mWrapper.close();
+        favCursor.close();
+
+        return favCities;
     }
 }

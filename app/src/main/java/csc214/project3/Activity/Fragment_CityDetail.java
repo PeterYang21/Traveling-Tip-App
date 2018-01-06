@@ -2,7 +2,6 @@ package csc214.project3.Activity;
 
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,9 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
-import csc214.project3.Model.City;
 import csc214.project3.R;
-import csc214.project3.View.Adapter_Cities;
 
 public class Fragment_CityDetail extends Fragment{
 
@@ -43,7 +40,7 @@ public class Fragment_CityDetail extends Fragment{
 //        Log.d("My Tag", "ONCRATEVIEW IS CALLED FOR DETAIL FRAGMENT");
         View v = inflater.inflate(R.layout.fragment_city_detail, container, false);
         ImageButton interestPreview = (ImageButton)v.findViewById(R.id.Button_PlaceofInterests);
-        String cityName = getArguments().getString(Adapter_Cities.Key_CityName);
+        String cityName = getArguments().getString(Activity_MainMenu.Key_CityName);
         Log.d("My Tag", "The city in DETAIL FRAGMENT "+cityName);
 
         if(cityName==("Dalian")){

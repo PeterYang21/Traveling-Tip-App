@@ -22,7 +22,7 @@ import csc214.project3.R;
 public class Fragment_RecView_MainMenu extends Fragment{
 
     public interface clickListener{
-        public void onClicked(String cityName);
+        void onClicked(String cityName);
     }
 
     private clickListener mListener;

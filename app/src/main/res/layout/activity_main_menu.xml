@@ -6,7 +6,7 @@
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="550dp"
     android:id="@+id/activity_main_menu"
     >
 
@@ -19,19 +19,20 @@
         android:layout_alignParentBottom="true"
     >
 
-        <Button
+        <TextView
             android:layout_height="wrap_content"
             android:layout_width="115dp"
-            android:id="@+id/toMainMenu"
-            android:text="Main\nMenu"
+            android:text="Quick Access"
+            android:textSize="15sp"
+            android:textStyle="bold"
             android:textAllCaps="false"
             />
 
         <Button
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_width="115dp"
-            android:id="@+id/toExplore"
-            android:text="Explore"
+            android:id="@+id/toFavorite"
+            android:text="Favorite"
             android:textAllCaps="false"
             />
 
@@ -39,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_width="115dp"
             android:id="@+id/toProfile"
-            android:text="My\nProfile"
+            android:text="Profile"
             android:textAllCaps="false"
             />
 

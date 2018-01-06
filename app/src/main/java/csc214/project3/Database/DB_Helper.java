@@ -76,23 +76,32 @@ public class DB_Helper extends SQLiteOpenHelper{
 
         City c1 = new City("Xiamen", R.drawable.xiamen);
         City c2 = new City("Dalian", R.drawable.dalian);
+        City c3 = new City("Guangzhou", R.drawable.guangzhou);
 //        Log.d("My Tag", "" + c1.getCityName() + c1.getCityImageResource());
 
-        Collection.insertCity(c1, db); // insert cities
-        Collection.insertCity(c2, db);
+        Collection.myDatabase = db; // assign database
 
-        Attraction att1 = new Attraction("XingHai Square", "Dalian", R.drawable.xinghai_sqaure,
+        // insert cities
+        Collection.insertCity(c1, db);
+        Collection.insertCity(c2, db);
+        Collection.insertCity(c3, db);
+
+        Attraction att_xinghai = new Attraction("XingHai Square", "Dalian", R.drawable.xinghai_sqaure,
                 R.drawable.dalian_xinghai01,R.drawable.dalian_xinghai02,R.drawable.dalian_xinghai03,R.string.XingHaiSquare);
 
-        Collection.insertAttraction(att1, db);
 //        Log.d("My Tag", "" + att1.getPreviewImage()+att1.getImage01()+ att1.getImage02()+att1.getImage03());
 
-        Attraction att_xiamenUniv = new Attraction("Xiamen University", "Xiamen", R.drawable.xiamen_univ01, R.drawable.xiamen_interest,
+        Attraction att_xiamenUniv = new Attraction("Xiamen University", "Xiamen", R.drawable.xiamen_univ01, R.drawable.xiamen_univ04,
                 R.drawable.xiamen_univ02, R.drawable.xiamen_univ03,R.string.XiamenUiviversity);
 
-        Collection.insertAttraction(att_xiamenUniv, db); // insert attractions for the app
+        Attraction att_baomanyuan = new Attraction("Bao Mo Yuan", "Guangzhou", R.drawable.guangzhou_baomoyuan01,
+                R.drawable.guangzhou_baomoyuan02, R.drawable.guangzhou_baomoyuan03, R.drawable.guangzhou_baomoyuan04,
+                R.string.BaoMoYuan_info);
 
-
+        // insert attractions for the app
+        Collection.insertAttraction(att_xinghai, db);
+        Collection.insertAttraction(att_xiamenUniv, db);
+        Collection.insertAttraction(att_baomanyuan, db);
     }
 
     public DB_Helper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {

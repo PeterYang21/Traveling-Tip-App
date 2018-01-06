@@ -2,10 +2,6 @@ package csc214.project3.Activity;
 
 
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -24,8 +20,8 @@ public class Fragment_Map extends SupportMapFragment{
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        final double Latti = getArguments().getDouble(Activity_CityDetail.Key_Latti);
-        final double Longi = getArguments().getDouble(Activity_CityDetail.Key_Longi);
+        final double Latti = getArguments().getDouble(Activity_CityPreview.Key_Latti);
+        final double Longi = getArguments().getDouble(Activity_CityPreview.Key_Longi);
 
         getMapAsync(new OnMapReadyCallback() {
             @Override
@@ -38,7 +34,7 @@ public class Fragment_Map extends SupportMapFragment{
 
     public void showLocation(double latti, double longi){
         if(Map!=null){
-            Log.d("My Tag", "Location is shown jalskjdkfalsjfkas");
+//            Log.d("My Tag", "Location is shown");
             LatLng location = new LatLng(latti, longi);
             MarkerOptions locationMarker =new MarkerOptions().position(location);
             Map.clear();

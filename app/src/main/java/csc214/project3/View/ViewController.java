@@ -48,7 +48,7 @@ public class ViewController {
 
     public static ArrayList<Attraction> getCollection_Attraction(SQLiteDatabase db, String city){
         myDatabase = db;
-        ArrayList<Attraction> attList = new ArrayList<>();
+        ArrayList<Attraction> attraction_List = new ArrayList<>();
 
         String WHERE = DB_Schema.AttractionTable.Columns.CITY+" =?";
         String[] args = new String[]{city};
@@ -64,13 +64,13 @@ public class ViewController {
 
         while(!mWrapper.isAfterLast()){
             Attraction att = mWrapper.getAttraction();
-            attList.add(att);
+            attraction_List.add(att);
             Log.d("My Tag: ", att.getImage01()+ " "+att.getImage02()+" "+att.getImage03());
             mWrapper.moveToNext();
         }
         mWrapper.close();
 
-        return attList;
+        return attraction_List;
     }
 
 }

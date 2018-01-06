@@ -14,12 +14,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 
+import csc214.project3.Model.Collection;
 import csc214.project3.R;
-import csc214.project3.View.Adapter_Cities;
 
-public class Activity_CityDetail extends AppCompatActivity{
+import android.widget.TextView;
+
+public class Activity_CityPreview extends AppCompatActivity{
 
     public static String Key_Latti = "Lattidude";
     public static String Key_Longi = "Longitude";
@@ -31,19 +32,19 @@ public class Activity_CityDetail extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_city_detail);
 
-        userName = getIntent().getExtras().getString(Activity_MainMenu.Key_UserName);
+        userName = getIntent().getExtras().getString(Activity_Login.Key_UserName);
+        Log.d("My Tag","Activity CityDetail User: "+userName);
 
-        Intent intent = getIntent();
-        cityName = intent.getExtras().getString(Adapter_Cities.Key_CityName);
+        cityName = getIntent().getExtras().getString(Activity_MainMenu.Key_CityName); // get current City from prev intent
         //getSupportActionBar().setTitle(cityName);
+        Log.d("My Tag","Activity CityDetail City: "+cityName);
 
-        // TODO: custom support bar
         LayoutInflater mInflator = LayoutInflater.from(this);
         View custom_actionbar = mInflator.inflate(R.layout.view_custom_actionbar, null);
 
+        // set up action bar
         ActionBar.LayoutParams params = new ActionBar.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setCustomView(custom_actionbar, params);
 
         ImageButton Button_Places = (ImageButton)findViewById(R.id.Button_PlaceofInterests);
         ImageButton Button_Plates = (ImageButton)findViewById(R.id.Button_CityPlates);
@@ -52,85 +53,23 @@ public class Activity_CityDetail extends AppCompatActivity{
         if(Button_Places==null){
             Log.d("MY tag", "VIEW IS NULL");
         }
-//        Button_Places.setImageBitmap(decodeImage(R.drawable.dalian_interest));
 
         if(cityName.equals("Dalian")) {
             // pass related parameters to generic function for information processing
+            // and set up action bar params
             processing(actionBar, custom_actionbar, params,
                         Button_Places, Button_Plates, Button_showMap,
                         R.drawable.dalian_interest, R.drawable.guobao_meat, 38.9140, 121.6147);
-            //getSupportActionBar().setTitle("City of Dalian");
-//            actionBar.setCustomView(custom_actionbar, params);
-//            actionBar.setDisplayShowTitleEnabled(false);
-//            actionBar.setDisplayShowCustomEnabled(true);
-//
-//            Log.d("MY Tag","DETAILED CITY IS "+decodeImage(R.drawable.dalian_interest));
-//            Button_Places.setImageBitmap(decodeImage(R.drawable.dalian_interest));
-//            Button_Places.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Intent intent = new Intent(Activity_CityDetail.this, Activity_CityInterest.class);
-//                    intent.putExtra(Adapter_Cities.Key_CityName, cityName);
-//                    startActivity(intent);
-//                }
-//            });
-//
-//            Button_showMap.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Intent intent = new Intent(Activity_CityDetail.this, Activity_Map.class);
-//                    intent.putExtra(Key_Latti,38.9140); // send location to map API
-//                    intent.putExtra(Key_Longi,121.6147);
-//                    startActivity(intent);
-//                }
-//            });
-//
-//            Button_Plates.setImageBitmap(decodeImage(R.drawable.guobao_meat));
-//            Button_Plates.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Intent intent = new Intent(Activity_CityDetail.this, Activity_CityPlate.class);
-//                    intent.putExtra(Adapter_Cities.Key_CityName, cityName);
-//                    startActivity(intent);
-//                }
-//            });
         }
         else if(cityName.equals("Xiamen")) {
             processing(actionBar, custom_actionbar, params,
                     Button_Places, Button_Plates, Button_showMap,
                     R.drawable.xiamen_interest, R.drawable.xiamen_plate_preview, 24.4798, 118.0894);
-//            getSupportActionBar().setTitle("City of Xiamen");
-//            Log.d("MY Tag","DETAILED CITY IS "+decodeImage(R.drawable.xiamen_interest));
-//            Button_Places.setImageBitmap(decodeImage(R.drawable.xiamen_interest));
-//            Button_Places.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Intent intent = new Intent(Activity_CityDetail.this, Activity_CityInterest.class);
-//                    intent.putExtra(Adapter_Cities.Key_CityName, cityName);
-//                    startActivity(intent);
-//                }
-//            });
-//
-//            Button_showMap.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Intent intent = new Intent(Activity_CityDetail.this, Activity_Map.class);
-//                    intent.putExtra(Key_Latti, 24.4798); // send location to map API
-//                    intent.putExtra(Key_Longi, 118.0894);
-//                    startActivity(intent);
-//                }
-//            });
-//
-//            Button_Plates.setImageBitmap(decodeImage(R.drawable.xiamen_plate_preview));
-//            Button_Plates.setOnClickListener(new View.OnClickListener() {
-//
-//                @Override
-//                public void onClick(View v) {
-//                    Intent intent = new Intent(Activity_CityDetail.this, Activity_CityPlate.class);
-//                    intent.putExtra(Adapter_Cities.Key_CityName, cityName);
-//                    startActivity(intent);
-//                }
-//            });
+        }
+        else if(cityName.equals("Guangzhou")){
+            processing(actionBar, custom_actionbar, params,
+                    Button_Places, Button_Plates, Button_showMap,
+                    R.drawable.guangzhou_interest_preview, R.drawable.guangdong_plate_preview, 23.1291, 113.2644);
         }
 
     }
@@ -147,13 +86,18 @@ public class Activity_CityDetail extends AppCompatActivity{
         actionBar.setDisplayShowTitleEnabled(false);
         actionBar.setDisplayShowCustomEnabled(true);
 
+        final ImageButton fav_button = (ImageButton)findViewById(R.id.custom_actionbar_image);
+        // process favorite button issues
+        Collection.doFavButton(fav_button, userName, cityName);
+
         Log.d("MY Tag","DETAILED CITY IS "+decodeImage(image_interest));
         Button_Places.setImageBitmap(decodeImage(image_interest));
         Button_Places.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Activity_CityDetail.this, Activity_CityInterest.class);
-                intent.putExtra(Adapter_Cities.Key_CityName, cityName);
+                Intent intent = new Intent(Activity_CityPreview.this, Activity_CityInterest.class);
+                intent.putExtra(Activity_MainMenu.Key_CityName, cityName);
+                intent.putExtra(Activity_Login.Key_UserName, userName);
                 startActivity(intent);
             }
         });
@@ -161,9 +105,10 @@ public class Activity_CityDetail extends AppCompatActivity{
         Button_showMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Activity_CityDetail.this, Activity_Map.class);
+                Intent intent = new Intent(Activity_CityPreview.this, Activity_Map.class);
                 intent.putExtra(Key_Latti, latti); // send location to map API
                 intent.putExtra(Key_Longi, longi);
+                intent.putExtra(Activity_MainMenu.Key_CityName, cityName);
                 startActivity(intent);
             }
         });
@@ -172,11 +117,15 @@ public class Activity_CityDetail extends AppCompatActivity{
         Button_Plates.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Activity_CityDetail.this, Activity_CityPlate.class);
-                intent.putExtra(Adapter_Cities.Key_CityName, cityName);
+                Intent intent = new Intent(Activity_CityPreview.this, Activity_CityPlate.class);
+                intent.putExtra(Activity_MainMenu.Key_CityName, cityName);
+                intent.putExtra(Activity_Login.Key_UserName, userName);
                 startActivity(intent);
             }
         });
+
+        TextView actionBarText = (TextView)findViewById(R.id.custom_actionbar_text);
+        actionBarText.setText(cityName);
     }
 
 
@@ -205,7 +154,7 @@ public class Activity_CityDetail extends AppCompatActivity{
         boolean isSelected;
 
         if(item.getItemId() == R.id.menu_CreateProfile){
-            Intent intent = new Intent(Activity_CityDetail.this, Activity_CreateProfile.class);
+            Intent intent = new Intent(Activity_CityPreview.this, Activity_CreateProfile.class);
             intent.putExtra(Activity_Login.Key_UserName, userName);
             startActivity(intent);
             isSelected = true;
@@ -213,7 +162,7 @@ public class Activity_CityDetail extends AppCompatActivity{
 
         else if(item.getItemId() == R.id.menu_LogOut){
 
-            Intent intent = new Intent(Activity_CityDetail.this, Activity_Login.class);
+            Intent intent = new Intent(Activity_CityPreview.this, Activity_Login.class);
             intent.putExtra(Activity_Login.Key_UserName, userName);
             startActivity(intent);
 
@@ -221,13 +170,22 @@ public class Activity_CityDetail extends AppCompatActivity{
             isSelected = true;
         }
         else if(item.getItemId() == R.id.menu_MainMenu){
-            Intent intent = new Intent(Activity_CityDetail.this, Activity_MainMenu.class);
+            Intent intent = new Intent(Activity_CityPreview.this, Activity_MainMenu.class);
             intent.putExtra(Activity_Login.Key_UserName, userName);
             startActivity(intent);
 
             Log.d("My tag", "Menu gotoMainMenu is clicked");
             isSelected = true;
         }
+        else if(item.getItemId() == R.id.menu_ShowFavorite){
+            Intent intent = new Intent(Activity_CityPreview.this, Activity_Favorite.class);
+            intent.putExtra(Activity_Login.Key_UserName, userName);
+            startActivity(intent);
+
+            Log.d("My tag", "Menu gotoFavorite is clicked");
+            isSelected = true;
+        }
+
         else{ // default false
             isSelected = super.onOptionsItemSelected(item);
         }

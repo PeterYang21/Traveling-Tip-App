@@ -2,10 +2,8 @@ package csc214.project3.View;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -31,7 +29,7 @@ public class Adapter_Cities extends RecyclerView.Adapter<Adapter_Cities.ViewHold
     private ArrayList<City> cityList;
     private SQLiteDatabase myDatabase;
     private Context mContext;
-    public static String Key_CityName;
+//    public static String Key_CityName = "Key_CityName";
     public Fragment_RecView_MainMenu.clickListener mListener;
 
     public Adapter_Cities(ArrayList<City> cityList, SQLiteDatabase db, Fragment_RecView_MainMenu.clickListener listener){
@@ -58,7 +56,7 @@ public class Adapter_Cities extends RecyclerView.Adapter<Adapter_Cities.ViewHold
     @Override
     public void onBindViewHolder(ViewHolder_Cities mHolder, int position) {
         City city = cityList.get(position);
-        Log.d(TAG, "In RecyclerView Cities Adapter The position is " + position);
+        Log.d(TAG, "In RecyclerView Cities Adapter the position is " + position);
         Log.d(TAG, "The city is " + city.getCityName());
 
         mHolder.bindItemtoHolder(city);
@@ -106,6 +104,10 @@ public class Adapter_Cities extends RecyclerView.Adapter<Adapter_Cities.ViewHold
                     else if(mCity.getCityName().equals("Xiamen")){
                         mListener.onClicked(mCity.getCityName());
                         Log.d(TAG, "City Xiamen is CLICKED");
+                    }
+                    else if(mCity.getCityName().equals("Guangzhou")){
+                        mListener.onClicked(mCity.getCityName());
+                        Log.d(TAG, "City Guangzhou is CLICKED");
                     }
                 }});
 

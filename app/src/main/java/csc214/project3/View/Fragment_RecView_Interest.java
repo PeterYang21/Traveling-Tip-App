@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-import csc214.project3.Activity.Activity_CityInterest;
+import csc214.project3.Activity.Activity_MainMenu;
 import csc214.project3.Controller.AudioManagement;
 import csc214.project3.Model.Attraction;
 import csc214.project3.Model.Audio;
@@ -54,7 +54,7 @@ public class Fragment_RecView_Interest extends Fragment{
 
         mAudioManagment = new AudioManagement(getContext());
         Bundle data = getArguments();
-        String city = data.getString(Activity_CityInterest.Key_CityName);
+        String city = data.getString(Activity_MainMenu.Key_CityName);
 
         Log.d("My Tag", "The attractions are from " + city);
 

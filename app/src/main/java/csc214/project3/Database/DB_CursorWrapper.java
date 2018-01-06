@@ -4,8 +4,6 @@ package csc214.project3.Database;
 import android.database.Cursor;
 import android.database.CursorWrapper;
 
-import org.w3c.dom.Attr;
-
 import csc214.project3.Model.*;
 
 public class DB_CursorWrapper extends CursorWrapper{
@@ -63,6 +61,14 @@ public class DB_CursorWrapper extends CursorWrapper{
         int info = getInt(getColumnIndex(DB_Schema.AttractionTable.Columns.INFO));
 
         return new Attraction(AttractionName,city,preview,image01,image02,image03,info);
+    }
+
+    public String getFavorite(){
+        if(getCount() == 0){
+            return null;
+        }
+        String cityName = getString(getColumnIndex(DB_Schema.FavoriteTable.Columns.FAVORITE));
+        return cityName;
     }
 
 }

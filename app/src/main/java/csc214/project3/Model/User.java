@@ -41,15 +41,3 @@ public class User {
         return this.mFavorite;
     }
 }
-
-
-//    public User(Account account, Profile profile, Posts posts, Favorite favorite){
-//        //this.mEmail = account.getEmailAddress();
-//        //this.mEmail = Email;
-//        this.mEmail = account.getEmailAddress();
-//        this.mAccount = account;
-//        this.mPosts = posts;
-//        this.mProfile = profile;
-//        //this.mUserID = userID;
-//        this.mFavorite = favorite;
-//    }

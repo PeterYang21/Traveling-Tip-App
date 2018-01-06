@@ -16,7 +16,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import csc214.project3.Controller.AudioManagement;
-import csc214.project3.Controller.SetBitmap;
 import csc214.project3.Model.Attraction;
 import csc214.project3.Model.Audio;
 import csc214.project3.R;
@@ -100,7 +99,9 @@ public class Adapter_Attractions extends RecyclerView.Adapter<Adapter_Attraction
                 name.setText(att.getName());
                 this.attractionName = att.getName();
 
+                info.setTextSize(18);
                 info.setText(att.getInfo());
+//                info.setTextSize(12);
                 preview.setImageResource(att.getPreviewImage());
 //                Log.d("My Tag", ""+att.getImage01());
                 image01.setImageResource(att.getImage01());
