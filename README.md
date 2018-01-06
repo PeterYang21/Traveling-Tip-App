@@ -3,7 +3,7 @@
 
 ## Functionality
 ### Create a new account
-![](img/create-account-2.png)
+![](img/create-account.png)
 ### Login
 ![](img/login-1.png)
 ### Robust password checking
