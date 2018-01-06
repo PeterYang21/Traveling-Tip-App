@@ -1,5 +1,6 @@
 # Travelling Tip App
 ## Description
+</br>Provide tips for travelling to various cities by showing their distinct features through views of locally traditional plates and places of interest. Users can create accounts, create/update profiles and favorite places interested in for further travelling plans while navigating app. App data including users’ information is managed by SQLite database
 
 ## Functionality
 ### Create a new account
@@ -13,7 +14,7 @@
 ![](img/main-menu-2.png)
 ### Create your profile
 ![](img/create-profile.png)
-### Update at any time
+### Update your profile at any time
 ![](img/update-profile.png)
 ### Preview of a city
 ![](img/city-preview.png)
